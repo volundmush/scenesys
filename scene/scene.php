@@ -23,7 +23,7 @@
 			$scene_text = $converter->convert($ansi_text->render(true, true, false, false));
 			$scene_text = str_replace("\n", "<br>", $scene_text);
 			$scene_text = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $scene_text);
-			$scene_text = str_replace(" ", "&nbsp;&nbsp;", $scene_text);
+			$scene_text = str_replace("  ", "&nbsp;&nbsp;", $scene_text);
 			$pose_data[] = ["owner"=>$indiv['character_id'], "owner_name"=>$indiv['character_name'], "text"=>$scene_text];
 			$poser_ids[] = $indiv['character_id'];
 			$log_data .= ":'''{{#var:".$indiv['character_id']."|".$indiv['character_name']." (".$indiv['character_id'].")}} has posed:'''&lt;br&gt;".$scene_text."<br> <br>\n\n";
