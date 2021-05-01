@@ -22,6 +22,7 @@
 	
 	$scenedb = new Medoo($db_data);
 	$num = ($_REQUEST['id']  ? $_REQUEST['id'] : $num );
+	$json = ($_REQUEST['json']  ? $_REQUEST['json'] : $json );
 	$smarty = new Smarty;
 	$gameinfo = ["name"=>$gamename,"desc"=>$gamedesc,"site"=>$gameurl,"connect"=>$gameconnect];
 	$smarty->assign('info', $gameinfo);

@@ -31,11 +31,15 @@
 		$poser_list = implode(", ",$poser_ids);
 		$scene_date = substr($scene_data['scene_date_created'],0,10);
 		#'location'=>$scene_data['room_name'],
-		$scene = ["title"=>$scene_data['scene_title'], 'id'=>$num, 'description'=>$scene_data['scene_outcome'], 'formatted_poses'=>$log_data, 'url'=>$url, 'poser_ids'=>$poser_list, 'creation_date'=>$scene_date];
-		
-		$smarty->assign('poses', $pose_data);
-		$smarty->assign('scene', $scene);
-		$smarty->display('templates/scene.tpl');
+		$scene = ["title"=>$scene_data['scene_title'], 'id'=>$num, 'description'=>$scene_data['scene_outcome'], 'formatted_poses'=>$pose_data, 'url'=>$url, 'poser_ids'=>$poser_list, 'creation_date'=>$scene_date];
+
+		if($json) {
+			echo json_enccode($scene);
+		} else {
+			$smarty->assign('poses', $pose_data);
+			$smarty->assign('scene', $scene);
+			$smarty->display('templates/scene.tpl');
+		}
 	}
 
 ?>
