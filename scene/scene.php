@@ -2,7 +2,6 @@
 	require_once 'base.php';
 	use MudString\PennMUSH;
 	use SensioLabs\AnsiConverter\AnsiToHtmlConverter;
-	$num = ($_REQUEST['id']  ? $_REQUEST['id'] : $num );
 
 	if (!$scenedb->count('volv_scene', ['scene_id'=>$num]))
 	{
@@ -34,7 +33,7 @@
 		$scene = ["title"=>$scene_data['scene_title'], 'id'=>$num, 'description'=>$scene_data['scene_outcome'], 'formatted_poses'=>$pose_data, 'url'=>$url, 'poser_ids'=>$poser_list, 'creation_date'=>$scene_date];
 
 		if($json) {
-			echo json_enccode($scene);
+			echo json_encode($scene);
 		} else {
 			$smarty->assign('poses', $pose_data);
 			$smarty->assign('scene', $scene);

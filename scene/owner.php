@@ -1,6 +1,5 @@
 <?php
 	require_once 'base.php';
-	$num = ($_REQUEST['id']  ? $_REQUEST['id'] : $num );
 
 	if (!$scenedb->count('volv_scene', ['runner_id'=>$num]))
 	{
