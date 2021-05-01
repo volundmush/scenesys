@@ -18,6 +18,7 @@
 		$scene_data[] = $indiv_data;
 	}
 	if($json) {
+		header("Content-type: application/json");
 		echo json_encode($scene_data);
 	} else {
 		$smarty->assign('scenes', $scene_data);
