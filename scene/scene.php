@@ -21,15 +21,10 @@
 		foreach ($pose_list as $indiv)
 		{
 			$ansi_text = PennMUSH::decode($indiv['action_text']);
-			print_r($ansi_text);
-			$scene_text = $converter->convert($ansi_text);
-			print($scene_text);
+			$scene_text = $converter->convert($ansi_text->render(true, true, false, false));
 			$pose_data[] = ["owner"=>$indiv['character_id'], "owner_name"=>$indiv['character_name'], "text"=>$scene_text];
 			$poser_ids[] = $indiv['character_id'];
-			$scene_text2 = str_replace("&","&amp;",$scene_text);
-			$scene_text2 = preg_replace("/<(.+?)>/","&lt;\\1&gt;",$scene_text2);
-			$scene_text2 = str_replace('"',"&quot;",$scene_text2);
-			$log_data .= ":'''{{#var:".$indiv['character_id']."|".$indiv['character_name']." (".$indiv['character_id'].")}} has posed:'''&lt;br&gt;".$scene_text2."<br> <br>\n\n";
+			$log_data .= ":'''{{#var:".$indiv['character_id']."|".$indiv['character_name']." (".$indiv['character_id'].")}} has posed:'''&lt;br&gt;".$scene_text."<br> <br>\n\n";
 		}
 		
 		$poser_ids = array_unique($poser_ids);
