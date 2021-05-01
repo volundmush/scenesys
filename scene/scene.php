@@ -1,5 +1,7 @@
 <?php
 	require_once 'base.php';
+	use MudString\PennMUSH;
+	use SensioLabs\AnsiConverter\AnsiToHtmlConverter;
 	$num = ($_REQUEST['id']  ? $_REQUEST['id'] : $num );
 
 	if (!$scenedb->count('volv_scene', ['scene_id'=>$num]))
@@ -15,9 +17,13 @@
 		$pose_data = array();
 		$log_data = "";
 		$poser_ids = array();
+		$converter = new AnsiToHtmlConverter();
 		foreach ($pose_list as $indiv)
 		{
-			$scene_text = ansi2html($indiv['action_text']);
+			$ansi_text = PennMUSH::decode($indiv['action_text']);
+			print_r($ansi_text);
+			$scene_text = $converter->convert($ansi_text);
+			print($scene_text);
 			$pose_data[] = ["owner"=>$indiv['character_id'], "owner_name"=>$indiv['character_name'], "text"=>$scene_text];
 			$poser_ids[] = $indiv['character_id'];
 			$scene_text2 = str_replace("&","&amp;",$scene_text);
