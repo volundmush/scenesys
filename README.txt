@@ -1,5 +1,5 @@
 ==========================<* Installing SceneSys *>===========================
-Hopefully you've read the README for the Codesuite 2.0 by the time you're reading this. If not, go read it now. This can wait.
+Hopefully you've read the README for the Codesuite 3.x by the time you're reading this. If not, go read it now. This can wait.
 
 Done reading it? Okay, good. Get ready for a headache.
 
